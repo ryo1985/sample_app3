@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
 								   dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower								   
+  has_many :logs, foreign_key: "owner_id"
+  has_many :reverse_logs, foreign_key: "other_id", class_name: "Log"
   has_many :talks, foreign_key: "from_id"
-  has_many :reverse_talks, foreign_key: "to_id"
+  has_many :reverse_talks, foreign_key: "to_id", class_name: "Talk"
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   has_secure_password

@@ -74,6 +74,9 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'  
+  gem 'minitest-reporters', '1.0.5'
+  gem 'mini_backtrace',     '0.1.3'
+  gem 'guard-minitest',     '2.3.1'
 end
 
 group :production do

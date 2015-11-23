@@ -10,6 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    
+    if current_user.id != @user.id
+      @log = Log.new(owner_id: @user.id, other_id: current_user.id)
+      @log.save
+    end
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 

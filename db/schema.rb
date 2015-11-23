@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122001944) do
+ActiveRecord::Schema.define(version: 20151123064729) do
+
+  create_table "logs", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.integer  "other_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "logs", ["other_id"], name: "index_logs_on_other_id"
+  add_index "logs", ["owner_id"], name: "index_logs_on_owner_id"
 
   create_table "microposts", force: :cascade do |t|
     t.string   "content"

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tests/test'
+
   resources :users do
     member do
 	  get :following, :followers
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   resources :microposts,    only: [:create, :destroy]
   resources :sessions,      only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :logs
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'  
